@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude Code for Non-Coders — AI-Native Workflows Workshop</title>
+  <meta name="description" content="A free workshop teaching AI-native workflows, vibe coding, and automation for PMs, designers, marketers, and founders. No coding background required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─────────────────────────────────────────
+       CSS CUSTOM PROPERTIES
+    ───────────────────────────────────────── */
+    :root {
+      --bg:           #0a0a0a;
+      --bg-2:         #111111;
+      --bg-3:         #161616;
+      --surface:      #1a1a1a;
+      --surface-2:    #222222;
+      --border:       rgba(255,255,255,0.08);
+      --border-hover: rgba(255,255,255,0.16);
+      --text:         #f5f5f5;
+      --text-muted:   #888888;
+      --text-dim:     #555555;
+      --accent:       #5C6BC0;
+      --accent-light: #7986CB;
+      --accent-glow:  rgba(92, 107, 192, 0.25);
+      --accent-glow2: rgba(92, 107, 192, 0.08);
+      --white:        #ffffff;
+      --radius-sm:    6px;
+      --radius:       12px;
+      --radius-lg:    20px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg:    0 12px 48px rgba(0,0,0,0.6);
+      --font:         'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --transition:   all 0.2s ease;
+    }
+
+    /* ─────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    ul { list-style: none; }
+
+    /* ─────────────────────────────────────────
+       UTILITY CLASSES
+    ───────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .container--narrow {
+      max-width: 720px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+    }
+
+    /* ─────────────────────────────────────────
+       BUTTONS
+    ───────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-family: var(--font);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+    }
+
+    .btn--primary {
+      background: var(--accent);
+      color: var(--white);
+      box-shadow: 0 0 0 0 var(--accent-glow);
+    }
+
+    .btn--primary:hover {
+      background: var(--accent-light);
+      box-shadow: 0 0 24px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    .btn--primary:active {
+      transform: translateY(0);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn--outline:hover {
+      border-color: var(--border-hover);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-1px);
+    }
+
+    .btn--large {
+      padding: 16px 36px;
+      font-size: 1.0625rem;
+      border-radius: var(--radius-lg);
+    }
+
+    .btn--small {
+      padding: 8px 16px;
+      font-size: 0.875rem;
+      border-radius: var(--radius-sm);
+    }
+
+    /* ─────────────────────────────────────────
+       BADGE
+    ───────────────────────────────────────── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 100px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .badge--coming-soon {
+      background: rgba(92,107,192,0.15);
+      border: 1px solid rgba(92,107,192,0.3);
+      color: var(--accent-light);
+    }
+
+    .badge--coming-soon::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      animation: pulse 2s infinite;
+    }
+
+    .badge--free {
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.25);
+      color: #4ade80;
+      font-weight: 600;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    /* ─────────────────────────────────────────
+       SECTION HEADINGS
+    ───────────────────────────────────────── */
+    .section-label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--white);
+    }
+
+    .section-sub {
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+
+    /* ─────────────────────────────────────────
+       1. STICKY NAV
+    ───────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      width: 100%;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav__logo {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav__logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      background: var(--accent);
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: 0;
+      flex-shrink: 0;
+    }
+
+    /* ─────────────────────────────────────────
+       2. HERO
+    ───────────────────────────────────────── */
+    .hero {
+      position: relative;
+      padding: 100px 0 96px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(ellipse at center, rgba(92,107,192,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    .hero__badge-row {
+      margin-bottom: 28px;
+    }
+
+    .hero__headline {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .hero__headline em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent-light) 0%, #9FA8DA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero__subheadline {
+      font-size: clamp(1.0625rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 580px;
+      margin: 0 auto 40px;
+    }
+
+    .hero__pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 44px;
+    }
+
+    .hero__pill {
+      padding: 6px 14px;
+      border-radius: 100px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .hero__pill:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    .hero__cta-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─────────────────────────────────────────
+       3. PROBLEM BAR
+    ───────────────────────────────────────── */
+    .problem-bar {
+      padding: 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-2);
+    }
+
+    .problem-bar__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .problem-bar__item {
+      padding: 40px 32px;
+      border-right: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .problem-bar__item:last-child {
+      border-right: none;
+    }
+
+    .problem-bar__item:hover {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .problem-bar__number {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--accent-light);
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .problem-bar__label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .problem-bar__desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ─────────────────────────────────────────
+       4. REFRAME
+    ───────────────────────────────────────── */
+    .reframe {
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .reframe__not {
+      font-size: clamp(2rem, 5vw, 3.75rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+
+    .reframe__not span {
+      position: relative;
+      display: inline-block;
+    }
+
+    .reframe__not span::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .reframe__body {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 640px;
+      margin: 0 auto 40px;
+    }
+
+    .reframe__compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .reframe__col {
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .reframe__col--bad {
+      background: rgba(239,68,68,0.05);
+      border-color: rgba(239,68,68,0.15);
+    }
+
+    .reframe__col--good {
+      background: var(--accent-glow2);
+      border-color: rgba(92,107,192,0.2);
+    }
+
+    .reframe__col-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .reframe__col--bad .reframe__col-title  { color: #f87171; }
+    .reframe__col--good .reframe__col-title { color: var(--accent-light); }
+
+    .reframe__col li {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .reframe__col li:last-child { border-bottom: none; }
+
+    .reframe__col li::before {
+      content: '✕';
+      font-size: 0.75rem;
+      color: #f87171;
+      flex-shrink: 0;
+    }
+
+    .reframe__col--good li::before {
+      content: '✓';
+      color: #4ade80;
+    }
+
+    /* ─────────────────────────────────────────
+       5. WHAT YOU'LL LEARN
+    ───────────────────────────────────────── */
+    .learn {
+      padding: 100px 0;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .learn__header {
+      margin-bottom: 56px;
+    }
+
+    .learn__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .learn__card {
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .learn__card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .learn__card:hover {
+      border-color: var(--border-hover);
+      background: var(--surface-2);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .learn__card:hover::before {
+      opacity: 1;
+    }
+
+    .learn__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--accent-glow2);
+      border: 1px solid rgba(92,107,192,0.2);
+      margin-bottom: 20px;
+      font-size: 1.25rem;
+    }
+
+    .learn__card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .learn__card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─────────────────────────────────────────
+       6. WHO IT'S FOR
+    ───────────────────────────────────────── */
+    .who {
+      padding: 100px 0;
+    }
+
+    .who__header {
+      margin-bottom: 56px;
+    }
+
+    .who__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .who__card {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: var(--transition);
+    }
+
+    .who__card:hover {
+      border-color: var(--border-hover);
+      background: var(--surface-2);
+      transform: translateX(3px);
+    }
+
+    .who__avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--accent-glow2);
+      border: 1px solid rgba(92,107,192,0.2);
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+
+    .who__role {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .who__benefit {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ─────────────────────────────────────────
+       7. WORKSHOP FORMAT
+    ───────────────────────────────────────── */
+    .format {
+      padding: 100px 0;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .format__header {
+      margin-bottom: 56px;
+    }
+
+    .format__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .format__item {
+      padding: 28px 24px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .format__item:hover {
+      border-color: var(--border-hover);
+      background: var(--surface-2);
+    }
+
+    .format__item-icon {
+      font-size: 1.75rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .format__item-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .format__item-value {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    /* ─────────────────────────────────────────
+       8. INSTRUCTOR
+    ───────────────────────────────────────── */
+    .instructor {
+      padding: 100px 0;
+    }
+
+    .instructor__card {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .instructor__avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, #9FA8DA 100%);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      border: 2px solid rgba(92,107,192,0.3);
+    }
+
+    .instructor__name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .instructor__title {
+      font-size: 0.9rem;
+      color: var(--accent-light);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .instructor__bio {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .instructor__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .instructor__tag {
+      padding: 4px 10px;
+      border-radius: 100px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ─────────────────────────────────────────
+       9. FAQ
+    ───────────────────────────────────────── */
+    .faq {
+      padding: 100px 0;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq__header {
+      margin-bottom: 56px;
+    }
+
+    .faq__list {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq__item {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .faq__item:hover {
+      border-color: var(--border-hover);
+    }
+
+    .faq__item[open] {
+      border-color: rgba(92,107,192,0.3);
+      background: var(--surface-2);
+    }
+
+    .faq__item summary {
+      padding: 20px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      list-style: none;
+      letter-spacing: -0.01em;
+      transition: color 0.2s ease;
+    }
+
+    .faq__item summary::-webkit-details-marker { display: none; }
+    .faq__item summary::marker { display: none; }
+
+    .faq__item summary:hover {
+      color: var(--accent-light);
+    }
+
+    .faq__item[open] summary {
+      color: var(--accent-light);
+    }
+
+    .faq__item summary::after {
+      content: '+';
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      flex-shrink: 0;
+      transition: transform 0.25s ease, color 0.2s ease;
+      line-height: 1;
+    }
+
+    .faq__item[open] summary::after {
+      content: '−';
+      color: var(--accent-light);
+    }
+
+    .faq__body {
+      padding: 0 24px 22px;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+    }
+
+    /* ─────────────────────────────────────────
+       10. FINAL CTA
+    ───────────────────────────────────────── */
+    .final-cta {
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 900px;
+      height: 500px;
+      background: radial-gradient(ellipse at center, rgba(92,107,192,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .final-cta__eyebrow {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--accent-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .final-cta__headline {
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .final-cta__sub {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 44px;
+      line-height: 1.65;
+    }
+
+    .final-cta__cta-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .final-cta__note {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+    }
+
+    /* ─────────────────────────────────────────
+       11. FOOTER
+    ───────────────────────────────────────── */
+    .footer {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer__copy {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+    }
+
+    .footer__copy a {
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+
+    .footer__copy a:hover { color: var(--text); }
+
+    .footer__links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer__links a {
+      font-size: 0.875rem;
+      color: var(--text-dim);
+      transition: color 0.2s ease;
+    }
+
+    .footer__links a:hover { color: var(--text-muted); }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE — TABLET
+    ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .learn__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .format__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reframe__compare {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+      }
+
+      .problem-bar__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .problem-bar__item {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .problem-bar__item:last-child {
+        border-bottom: none;
+      }
+
+      .instructor__card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .instructor__tags {
+        justify-content: center;
+      }
+    }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE — MOBILE
+    ───────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .nav__logo span.nav__logo-text {
+        display: none;
+      }
+
+      .hero {
+        padding: 72px 0 72px;
+      }
+
+      .learn__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .who__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .format__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero__cta-group {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .final-cta__cta-group {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer__inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       1. STICKY NAV
+  ═══════════════════════════════════════ -->
+  <header class="nav">
+    <div class="container">
+      <nav class="nav__inner" aria-label="Main navigation">
+        <a href="#" class="nav__logo">
+          <span class="nav__logo-mark">CC</span>
+          <span class="nav__logo-text">Claude Code for Non-Coders</span>
+        </a>
+        <a href="#register" class="btn btn--primary btn--small">Join Waitlist →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════
+         2. HERO
+    ═══════════════════════════════════════ -->
+    <section class="hero" id="hero">
+      <div class="container container--narrow">
+
+        <div class="hero__badge-row">
+          <span class="badge badge--coming-soon">Coming Soon — Join the Waitlist</span>
+        </div>
+
+        <h1 class="hero__headline">
+          Work smarter with AI.<br />
+          <em>No coding required.</em>
+        </h1>
+
+        <p class="hero__subheadline">
+          A free live workshop that teaches PMs, designers, marketers, and operators
+          how to build AI-native workflows — without writing a single line of code.
+        </p>
+
+        <div class="hero__pills" role="list" aria-label="Who this is for">
+          <span class="hero__pill" role="listitem">Product Managers</span>
+          <span class="hero__pill" role="listitem">Business Analysts</span>
+          <span class="hero__pill" role="listitem">UX / UI Designers</span>
+          <span class="hero__pill" role="listitem">Marketers</span>
+          <span class="hero__pill" role="listitem">Operations</span>
+          <span class="hero__pill" role="listitem">Founders</span>
+        </div>
+
+        <div class="hero__cta-group">
+          <a href="#register" class="btn btn--primary btn--large">
+            Reserve My Spot →
+          </a>
+          <a href="#learn" class="btn btn--outline btn--large">
+            See What's Covered
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         3. PROBLEM BAR
+    ═══════════════════════════════════════ -->
+    <section class="problem-bar" aria-label="The problem">
+      <div class="container">
+        <div class="problem-bar__grid">
+
+          <div class="problem-bar__item">
+            <div class="problem-bar__number">80%</div>
+            <div class="problem-bar__label">AI is reshaping every role</div>
+            <div class="problem-bar__desc">From research to reporting, AI is already inside the tools you use every day.</div>
+          </div>
+
+          <div class="problem-bar__item">
+            <div class="problem-bar__number">0 / N</div>
+            <div class="problem-bar__label">Most tools assume you can code</div>
+            <div class="problem-bar__desc">The best AI workflows are locked behind CLI knowledge, Python scripts, and dev environments.</div>
+          </div>
+
+          <div class="problem-bar__item">
+            <div class="problem-bar__number">→</div>
+            <div class="problem-bar__label">There's a better way</div>
+            <div class="problem-bar__desc">AI-native workflows let non-technical people move as fast as engineers — without touching a terminal.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         4. REFRAME
+    ═══════════════════════════════════════ -->
+    <section class="reframe" id="about">
+      <div class="container container--narrow">
+
+        <p class="reframe__not">
+          This is <span>NOT</span> a coding bootcamp.
+        </p>
+
+        <p class="reframe__body">
+          You won't memorize syntax, write functions, or stare at error messages.
+          This workshop is about <strong style="color: var(--text);">thinking differently about work</strong> —
+          using AI as a collaborator to research, build, automate, and ship, all from
+          a plain browser window.
+        </p>
+
+        <div class="reframe__compare">
+
+          <div class="reframe__col reframe__col--bad">
+            <div class="reframe__col-title">Not This</div>
+            <ul>
+              <li>Learning Python syntax</li>
+              <li>Setting up dev environments</li>
+              <li>Reading documentation</li>
+              <li>Asking engineering to help</li>
+              <li>Waiting weeks to ship</li>
+            </ul>
+          </div>
+
+          <div class="reframe__col reframe__col--good">
+            <div class="reframe__col-title">This Instead</div>
+            <ul>
+              <li>AI-native workflows</li>
+              <li>Vibe coding in plain English</li>
+              <li>Automating repetitive work</li>
+              <li>Shipping ideas independently</li>
+              <li>Multiplying your output</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         5. WHAT YOU'LL LEARN
+    ═══════════════════════════════════════ -->
+    <section class="learn" id="learn">
+      <div class="container">
+
+        <div class="learn__header">
+          <span class="section-label">Curriculum</span>
+          <h2 class="section-title">What you'll walk away with</h2>
+          <p class="section-sub">Six practical modules, built for people who work with ideas — not code.</p>
+        </div>
+
+        <div class="learn__grid">
+
+          <div class="learn__card">
+            <div class="learn__icon" aria-hidden="true">🧠</div>
+            <div class="learn__card-title">AI-Native Workflows</div>
+            <p class="learn__card-desc">Redesign how you work from the ground up — with AI embedded at every step, not bolted on.</p>
+          </div>
+
+          <div class="learn__card">
+            <div class="learn__icon" aria-hidden="true">✨</div>
+            <div class="learn__card-title">Vibe Coding</div>
+            <p class="learn__card-desc">Describe what you want in plain language and watch Claude Code turn your intent into working outputs.</p>
+          </div>
+
+          <div class="learn__card">
+            <div class="learn__icon" aria-hidden="true">🎼</div>
+            <div class="learn__card-title">AI Orchestration</div>
+            <p class="learn__card-desc">Coordinate multiple AI agents to tackle complex, multi-step tasks — like a conductor, not a programmer.</p>
+          </div>
+
+          <div class="learn__card">
+            <div class="learn__icon" aria-hidden="true">⚙️</div>
+            <div class="learn__card-title">Workflow Automation</div>
+            <p class="learn__card-desc">Identify your repetitive tasks and build AI-powered automations that run while you sleep.</p>
+          </div>
+
+          <div class="learn__card">
+            <div class="learn__icon" aria-hidden="true">🌐</div>
+            <div class="learn__card-title">Claude Code Web</div>
+            <p class="learn__card-desc">Master Claude's browser-based interface — no terminal, no setup, no friction between you and your ideas.</p>
+          </div>
+
+          <div class="learn__card">
+            <div class="learn__icon" aria-hidden="true">🔁</div>
+            <div class="learn__card-title">Claude Code Routines</div>
+            <p class="learn__card-desc">Build reusable AI routines for your most common workflows, so every task gets faster over time.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         6. WHO IT'S FOR
+    ═══════════════════════════════════════ -->
+    <section class="who" id="who">
+      <div class="container">
+
+        <div class="who__header">
+          <span class="section-label">Audience</span>
+          <h2 class="section-title">Built for people who don't code</h2>
+          <p class="section-sub">If any of these sound like you, this workshop was designed with your work in mind.</p>
+        </div>
+
+        <div class="who__grid">
+
+          <div class="who__card">
+            <div class="who__avatar" aria-hidden="true">📋</div>
+            <div>
+              <div class="who__role">Product Managers</div>
+              <p class="who__benefit">Spec features faster, synthesize user research, and prototype ideas without waiting on engineers.</p>
+            </div>
+          </div>
+
+          <div class="who__card">
+            <div class="who__avatar" aria-hidden="true">📊</div>
+            <div>
+              <div class="who__role">Business Analysts</div>
+              <p class="who__benefit">Automate data wrangling, generate reports, and build analysis workflows that scale.</p>
+            </div>
+          </div>
+
+          <div class="who__card">
+            <div class="who__avatar" aria-hidden="true">🎨</div>
+            <div>
+              <div class="who__role">UX / UI Designers</div>
+              <p class="who__benefit">Go from concept to working prototype, generate copy variants, and test ideas at speed.</p>
+            </div>
+          </div>
+
+          <div class="who__card">
+            <div class="who__avatar" aria-hidden="true">📣</div>
+            <div>
+              <div class="who__role">Marketers</div>
+              <p class="who__benefit">Build content engines, automate campaign assets, and personalise at scale — solo.</p>
+            </div>
+          </div>
+
+          <div class="who__card">
+            <div class="who__avatar" aria-hidden="true">🔧</div>
+            <div>
+              <div class="who__role">Operations</div>
+              <p class="who__benefit">Eliminate manual processes, build internal tools, and automate the work nobody wants to do.</p>
+            </div>
+          </div>
+
+          <div class="who__card">
+            <div class="who__avatar" aria-hidden="true">🚀</div>
+            <div>
+              <div class="who__role">Founders</div>
+              <p class="who__benefit">Move like a team of ten as a solo founder — build, test, and iterate on ideas without hiring.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         7. WORKSHOP FORMAT
+    ═══════════════════════════════════════ -->
+    <section class="format" id="format">
+      <div class="container">
+
+        <div class="format__header">
+          <span class="section-label">Format</span>
+          <h2 class="section-title">What to expect</h2>
+          <p class="section-sub">A focused, hands-on session — not a lecture. You'll leave with things that actually work.</p>
+        </div>
+
+        <div class="format__grid">
+
+          <div class="format__item">
+            <span class="format__item-icon" aria-hidden="true">📅</span>
+            <div class="format__item-label">Date</div>
+            <div class="format__item-value">Coming Soon</div>
+          </div>
+
+          <div class="format__item">
+            <span class="format__item-icon" aria-hidden="true">⏱️</span>
+            <div class="format__item-label">Duration</div>
+            <div class="format__item-value">3 Hours</div>
+          </div>
+
+          <div class="format__item">
+            <span class="format__item-icon" aria-hidden="true">💻</span>
+            <div class="format__item-label">Delivery</div>
+            <div class="format__item-value">Live &amp; Online</div>
+          </div>
+
+          <div class="format__item">
+            <span class="format__item-icon" aria-hidden="true">👥</span>
+            <div class="format__item-label">Cohort Size</div>
+            <div class="format__item-value">
+              Small Batch &nbsp;<span class="badge badge--free">Free</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         8. INSTRUCTOR
+    ═══════════════════════════════════════ -->
+    <section class="instructor" id="instructor">
+      <div class="container">
+
+        <div style="text-align: center; margin-bottom: 48px;">
+          <span class="section-label">Your Instructor</span>
+          <h2 class="section-title">Meet the person leading the session</h2>
+        </div>
+
+        <div class="instructor__card">
+
+          <div class="instructor__avatar" aria-label="Instructor avatar placeholder">
+            🧑‍💻
+          </div>
+
+          <div>
+            <div class="instructor__name">Instructor Name</div>
+            <div class="instructor__title">AI Workflow Specialist &amp; Workshop Facilitator</div>
+            <p class="instructor__bio">
+              Placeholder bio — the instructor brings deep hands-on experience with
+              Claude Code and AI-native workflows, having helped dozens of non-technical
+              teams ship faster and work smarter. They've facilitated workshops for
+              product teams, startups, and enterprise operators at every stage.
+            </p>
+            <div class="instructor__tags">
+              <span class="instructor__tag">AI Workflows</span>
+              <span class="instructor__tag">Claude Code</span>
+              <span class="instructor__tag">No-code Automation</span>
+              <span class="instructor__tag">Workshop Facilitation</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         9. FAQ
+    ═══════════════════════════════════════ -->
+    <section class="faq" id="faq">
+      <div class="container">
+
+        <div class="faq__header" style="text-align: center;">
+          <span class="section-label">FAQ</span>
+          <h2 class="section-title">Common questions</h2>
+          <p class="section-sub">Everything you need to know before you sign up.</p>
+        </div>
+
+        <div class="faq__list" role="list">
+
+          <details class="faq__item" role="listitem">
+            <summary>Do I need any coding or technical experience?</summary>
+            <div class="faq__body">
+              None at all. This workshop is built specifically for people who have never
+              written code and have no intention of starting. If you can use a browser and
+              write an email, you have everything you need. The whole point is to show you
+              how to get results that used to require a developer — without becoming one.
+            </div>
+          </details>
+
+          <details class="faq__item" role="listitem">
+            <summary>What tools or software do I need to install?</summary>
+            <div class="faq__body">
+              Nothing to install. The entire workshop runs through Claude Code Web,
+              which is browser-based. You'll need a Claude account (free tier works) and
+              a laptop with a modern browser. That's it. Setup instructions will be sent
+              to registered attendees before the session.
+            </div>
+          </details>
+
+          <details class="faq__item" role="listitem">
+            <summary>How is this different from learning ChatGPT or Copilot?</summary>
+            <div class="faq__body">
+              Prompt engineering teaches you to ask better questions. This workshop teaches
+              you to build better systems. You'll learn how to design full workflows,
+              chain tasks together using AI orchestration, create reusable routines, and
+              automate multi-step processes — not just get a smarter answer to a one-off
+              question. Claude Code is purpose-built for this kind of structured,
+              agentic work.
+            </div>
+          </details>
+
+          <details class="faq__item" role="listitem">
+            <summary>Is the workshop really free? What's the catch?</summary>
+            <div class="faq__body">
+              Yes, completely free. No upsell mid-session, no surprise payment wall.
+              The cohort will be kept deliberately small to maintain quality and make
+              sure everyone gets value from it. A waitlist exists because spaces are
+              limited — not to create artificial scarcity. Future advanced workshops
+              may be paid, but this one is not.
+            </div>
+          </details>
+
+          <details class="faq__item" role="listitem">
+            <summary>Will there be a recording if I can't attend live?</summary>
+            <div class="faq__body">
+              The live experience is intentionally interactive — you'll be building and
+              experimenting in real time, which is hard to replicate in a recording.
+              That said, we plan to record sessions and share them with registered
+              attendees who couldn't make it. Join the waitlist and you'll be the first
+              to know when dates and replays are confirmed.
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         10. FINAL CTA
+    ═══════════════════════════════════════ -->
+    <section class="final-cta" id="register">
+      <div class="container container--narrow">
+
+        <p class="final-cta__eyebrow">Free Workshop · Coming Soon</p>
+
+        <h2 class="final-cta__headline">
+          Your AI advantage<br />
+          starts here.
+        </h2>
+
+        <p class="final-cta__sub">
+          Spots are limited and filling up. Join the waitlist now and be first
+          in line when dates are announced.
+        </p>
+
+        <div class="final-cta__cta-group">
+          <a href="#register" class="btn btn--primary btn--large">
+            Join the Waitlist →
+          </a>
+        </div>
+
+        <p class="final-cta__note">Free · No credit card · Unsubscribe anytime</p>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       11. FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__copy">
+          &copy; 2026 Claude Code for Non-Coders. All rights reserved.
+        </p>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
