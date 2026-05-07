@@ -13,7 +13,7 @@ const pains = [
 
 export default function PainPoints() {
   return (
-    <section className="py-24 px-6 border-t border-zinc-800/60">
+    <section className="py-24 px-6 bg-slate-50 border-t border-slate-100">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -22,11 +22,11 @@ export default function PainPoints() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <p className="text-xs uppercase tracking-widest text-violet-400 font-semibold mb-4">Sound familiar?</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50 tracking-tight">
+          <p className="text-xs uppercase tracking-widest text-violet-600 font-semibold mb-4">Sound familiar?</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
             You don&apos;t need to learn to code.
             <br />
-            <span className="text-zinc-400">You need to learn to direct.</span>
+            <span className="text-slate-500">You need to learn to direct.</span>
           </h2>
         </motion.div>
 
@@ -38,10 +38,10 @@ export default function PainPoints() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="flex gap-4 p-5 bg-zinc-900/50 border border-zinc-800/70 rounded-xl hover:border-zinc-700 transition-colors"
+              className="flex gap-4 p-5 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200"
             >
               <span className="text-2xl shrink-0 mt-0.5">{pain.emoji}</span>
-              <p className="text-zinc-400 text-sm leading-relaxed">{pain.text}</p>
+              <p className="text-slate-600 text-sm leading-relaxed">{pain.text}</p>
             </motion.div>
           ))}
         </div>
@@ -53,7 +53,7 @@ export default function PainPoints() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 text-center"
         >
-          <p className="text-zinc-300 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-700 text-lg max-w-2xl mx-auto">
             This workshop closes that gap. You leave with working AI workflows, not PowerPoint slides about AI potential.
           </p>
         </motion.div>

@@ -11,10 +11,10 @@ export default function Badge({ children, variant = 'default', className }: Badg
     <span
       className={cn(
         'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border',
-        variant === 'default' && 'bg-zinc-900 border-zinc-700 text-zinc-300',
-        variant === 'purple' && 'bg-violet-950/50 border-violet-800/50 text-violet-300',
-        variant === 'blue' && 'bg-blue-950/50 border-blue-800/50 text-blue-300',
-        variant === 'green' && 'bg-emerald-950/50 border-emerald-800/50 text-emerald-300',
+        variant === 'default' && 'bg-slate-100 border-slate-200 text-slate-600',
+        variant === 'purple' && 'bg-violet-50 border-violet-200 text-violet-700',
+        variant === 'blue' && 'bg-blue-50 border-blue-200 text-blue-700',
+        variant === 'green' && 'bg-emerald-50 border-emerald-200 text-emerald-700',
         className
       )}
     >

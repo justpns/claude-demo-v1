@@ -66,7 +66,7 @@ export default function Curriculum() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section id="curriculum" className="py-24 px-6 border-t border-zinc-800/60">
+    <section id="curriculum" className="py-24 px-6 bg-slate-50 border-t border-slate-100">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,11 +75,11 @@ export default function Curriculum() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <p className="text-xs uppercase tracking-widest text-violet-400 font-semibold mb-4">Curriculum</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50 tracking-tight mb-4">
+          <p className="text-xs uppercase tracking-widest text-violet-600 font-semibold mb-4">Curriculum</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-4">
             Eight modules. Full day.
           </h2>
-          <p className="text-zinc-400 text-lg max-w-xl mx-auto">
+          <p className="text-slate-600 text-lg max-w-xl mx-auto">
             Every module ends with something deployed. Click any module to see what you&apos;ll build inside it.
           </p>
         </motion.div>
@@ -92,17 +92,17 @@ export default function Curriculum() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="border border-zinc-800 rounded-xl overflow-hidden"
+              className="border border-slate-200 bg-white shadow-sm rounded-xl overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center gap-4 p-5 text-left hover:bg-zinc-900/60 transition-colors"
+                className="w-full flex items-center gap-4 p-5 text-left hover:bg-slate-50 transition-colors"
               >
-                <span className="text-xs font-mono text-violet-500 shrink-0 w-7">{mod.number}</span>
-                <span className="font-semibold text-zinc-100 flex-1 text-sm">{mod.title}</span>
-                <span className="text-xs text-zinc-500 shrink-0 mr-3">{mod.duration}</span>
+                <span className="text-xs font-mono text-violet-600 shrink-0 w-7">{mod.number}</span>
+                <span className="font-semibold text-slate-900 flex-1 text-sm">{mod.title}</span>
+                <span className="text-xs text-slate-400 shrink-0 mr-3">{mod.duration}</span>
                 <svg
-                  className={`w-4 h-4 text-zinc-500 shrink-0 transition-transform duration-200 ${openIndex === i ? 'rotate-180' : ''}`}
+                  className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${openIndex === i ? 'rotate-180' : ''}`}
                   fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -118,11 +118,11 @@ export default function Curriculum() {
                     transition={{ duration: 0.25, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <div className="px-5 pb-5 border-t border-zinc-800">
-                      <p className="text-zinc-400 text-sm leading-relaxed mt-4 mb-4">{mod.description}</p>
+                    <div className="px-5 pb-5 border-t border-slate-200">
+                      <p className="text-slate-600 text-sm leading-relaxed mt-4 mb-4">{mod.description}</p>
                       <ul className="space-y-1.5">
                         {mod.topics.map((topic, j) => (
-                          <li key={j} className="flex items-start gap-2 text-xs text-zinc-500">
+                          <li key={j} className="flex items-start gap-2 text-xs text-slate-500">
                             <span className="text-violet-500 mt-0.5">✦</span>
                             {topic}
                           </li>

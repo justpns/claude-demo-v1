@@ -61,14 +61,14 @@ export default function RegisterForm() {
 
   if (status === 'success') {
     return (
-      <div className="bg-emerald-950/40 border border-emerald-800/50 rounded-2xl p-8 text-center">
-        <div className="w-12 h-12 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center mx-auto mb-4">
-          <svg className="w-6 h-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+      <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 text-center">
+        <div className="w-12 h-12 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center mx-auto mb-4">
+          <svg className="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
           </svg>
         </div>
-        <h3 className="font-bold text-zinc-50 text-xl mb-2">You&apos;re registered! 🎉</h3>
-        <p className="text-zinc-400 text-sm leading-relaxed">
+        <h3 className="font-bold text-slate-900 text-xl mb-2">You&apos;re registered! 🎉</h3>
+        <p className="text-slate-600 text-sm leading-relaxed">
           Check your inbox — a confirmation email is on its way. We&apos;ll see you at the workshop.
         </p>
       </div>
@@ -78,11 +78,11 @@ export default function RegisterForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-8 text-left space-y-4"
+      className="bg-white border border-slate-200 rounded-2xl p-8 text-left space-y-4 shadow-lg"
     >
       <div>
-        <label className="block text-xs font-medium text-zinc-400 mb-1.5">
-          Full Name <span className="text-red-400">*</span>
+        <label className="block text-xs font-medium text-slate-700 mb-1.5">
+          Full Name <span className="text-red-500">*</span>
         </label>
         <Input
           {...register('name')}
@@ -93,8 +93,8 @@ export default function RegisterForm() {
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-zinc-400 mb-1.5">
-          Email Address <span className="text-red-400">*</span>
+        <label className="block text-xs font-medium text-slate-700 mb-1.5">
+          Email Address <span className="text-red-500">*</span>
         </label>
         <Input
           {...register('email')}
@@ -106,13 +106,13 @@ export default function RegisterForm() {
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-zinc-400 mb-1.5">
-          Your Role <span className="text-zinc-600 font-normal">(optional)</span>
+        <label className="block text-xs font-medium text-slate-700 mb-1.5">
+          Your Role <span className="text-slate-400 font-normal">(optional)</span>
         </label>
         <select
           {...register('role')}
           disabled={status === 'loading'}
-          className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 hover:border-zinc-600 rounded-lg text-zinc-100 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full px-4 py-3 bg-white border border-slate-300 hover:border-slate-400 rounded-lg text-slate-900 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-violet-500/30 focus:border-violet-500 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <option value="">Select your role</option>
           {ROLES.map((role) => (
@@ -122,7 +122,7 @@ export default function RegisterForm() {
       </div>
 
       {status === 'error' && (
-        <p className="text-red-400 text-sm bg-red-950/30 border border-red-800/40 rounded-lg px-4 py-3">
+        <p className="text-red-600 text-sm bg-red-50 border border-red-200 rounded-lg px-4 py-3">
           {errorMessage}
         </p>
       )}
@@ -150,7 +150,7 @@ export default function RegisterForm() {
         )}
       </button>
 
-      <p className="text-center text-xs text-zinc-600">
+      <p className="text-center text-xs text-slate-400">
         By registering you agree to receive workshop communications. No spam, ever.
       </p>
     </form>

@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-zinc-800/60 py-12 px-6">
+    <footer className="border-t border-slate-200 py-12 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <div className="w-6 h-6 rounded-md bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center">
@@ -8,12 +8,12 @@ export default function Footer() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <span className="text-sm font-medium text-zinc-400">Claude Code Workshop</span>
+          <span className="text-sm font-medium text-slate-500">Claude Code Workshop</span>
         </div>
-        <p className="text-xs text-zinc-600 text-center">
+        <p className="text-xs text-slate-400 text-center">
           © 2025 Claude Code Workshop by Panusorn Srijamorn. All rights reserved.
         </p>
-        <p className="text-xs text-zinc-600">Bangkok, Thailand</p>
+        <p className="text-xs text-slate-400">Bangkok, Thailand</p>
       </div>
     </footer>
   )

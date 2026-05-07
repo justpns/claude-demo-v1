@@ -42,7 +42,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section id="faq" className="py-24 px-6 border-t border-zinc-800/60">
+    <section id="faq" className="py-24 px-6 bg-slate-50 border-t border-slate-100">
       <div className="max-w-2xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,8 +51,8 @@ export default function FAQ() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <p className="text-xs uppercase tracking-widest text-violet-400 font-semibold mb-4">FAQ</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50 tracking-tight">
+          <p className="text-xs uppercase tracking-widest text-violet-600 font-semibold mb-4">FAQ</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
             Questions, answered.
           </h2>
         </motion.div>
@@ -65,15 +65,15 @@ export default function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: i * 0.04 }}
-              className="border border-zinc-800 rounded-xl overflow-hidden"
+              className="border border-slate-200 bg-white shadow-sm rounded-xl overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-zinc-900/60 transition-colors"
+                className="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-slate-50 transition-colors"
               >
-                <span className="font-medium text-zinc-100 text-sm leading-snug">{faq.q}</span>
+                <span className="font-medium text-slate-900 text-sm leading-snug">{faq.q}</span>
                 <svg
-                  className={`w-4 h-4 text-zinc-500 shrink-0 transition-transform duration-200 ${openIndex === i ? 'rotate-180' : ''}`}
+                  className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${openIndex === i ? 'rotate-180' : ''}`}
                   fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -89,7 +89,7 @@ export default function FAQ() {
                     transition={{ duration: 0.22, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <p className="px-5 pb-5 text-zinc-400 text-sm leading-relaxed border-t border-zinc-800 pt-4">
+                    <p className="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
                       {faq.a}
                     </p>
                   </motion.div>

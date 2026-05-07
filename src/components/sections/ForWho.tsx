@@ -15,7 +15,7 @@ const roles = [
 
 export default function ForWho() {
   return (
-    <section className="py-24 px-6 border-t border-zinc-800/60">
+    <section className="py-24 px-6 bg-slate-50 border-t border-slate-100">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -24,11 +24,11 @@ export default function ForWho() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <p className="text-xs uppercase tracking-widest text-violet-400 font-semibold mb-4">Who this is for</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50 tracking-tight mb-4">
+          <p className="text-xs uppercase tracking-widest text-violet-600 font-semibold mb-4">Who this is for</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-4">
             Built for builders without code.
           </h2>
-          <p className="text-zinc-400 max-w-xl mx-auto text-lg">
+          <p className="text-slate-600 max-w-xl mx-auto text-lg">
             If you can think in outcomes and communicate clearly, you can build AI workflows. No prior technical experience required.
           </p>
         </motion.div>
@@ -41,11 +41,11 @@ export default function ForWho() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: i * 0.05 }}
-              className="p-5 bg-zinc-900/60 border border-zinc-800/70 rounded-xl hover:border-zinc-700 hover:bg-zinc-900 transition-all duration-200"
+              className="p-5 bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md hover:scale-[1.01] transition-all duration-200"
             >
               <span className="text-2xl block mb-3">{role.emoji}</span>
-              <h3 className="font-semibold text-zinc-100 text-sm mb-1.5">{role.title}</h3>
-              <p className="text-zinc-500 text-xs leading-relaxed">{role.description}</p>
+              <h3 className="font-semibold text-slate-900 text-sm mb-1.5">{role.title}</h3>
+              <p className="text-slate-500 text-xs leading-relaxed">{role.description}</p>
             </motion.div>
           ))}
         </div>
@@ -55,10 +55,10 @@ export default function ForWho() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 p-6 bg-violet-950/30 border border-violet-800/30 rounded-2xl text-center"
+          className="mt-12 p-6 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-2xl text-center"
         >
-          <p className="text-violet-300 font-medium mb-1">Not a coder? That&apos;s the point.</p>
-          <p className="text-zinc-400 text-sm">This workshop was designed specifically for people who think in outcomes, not syntax. If you can describe what you want — you can build it.</p>
+          <p className="text-white font-bold mb-1">Not a coder? That&apos;s the point.</p>
+          <p className="text-violet-100 text-sm">This workshop was designed specifically for people who think in outcomes, not syntax. If you can describe what you want — you can build it.</p>
         </motion.div>
       </div>
     </section>

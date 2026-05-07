@@ -21,7 +21,7 @@ export default function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
-          ? 'bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800/80'
+          ? 'bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm'
           : 'bg-transparent'
       )}
     >
@@ -32,13 +32,13 @@ export default function Navbar() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </div>
-          <span className="text-sm font-semibold text-zinc-200">Claude Code Workshop</span>
+          <span className="text-sm font-semibold text-slate-900">Claude Code Workshop</span>
         </div>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm text-zinc-400">
-          <a href="#curriculum" className="hover:text-zinc-100 transition-colors">Curriculum</a>
-          <a href="#instructor" className="hover:text-zinc-100 transition-colors">Instructor</a>
-          <a href="#faq" className="hover:text-zinc-100 transition-colors">FAQ</a>
+        <nav className="hidden md:flex items-center gap-6 text-sm text-slate-600">
+          <a href="#curriculum" className="hover:text-slate-900 transition-colors">Curriculum</a>
+          <a href="#instructor" className="hover:text-slate-900 transition-colors">Instructor</a>
+          <a href="#faq" className="hover:text-slate-900 transition-colors">FAQ</a>
         </nav>
 
         <div
@@ -49,7 +49,7 @@ export default function Navbar() {
         >
           <a
             href="#register"
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-violet-500/20"
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-violet-500/25"
           >
             Reserve Your Spot
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

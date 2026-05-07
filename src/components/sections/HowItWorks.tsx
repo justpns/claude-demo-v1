@@ -25,7 +25,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-24 px-6 border-t border-zinc-800/60">
+    <section className="py-24 px-6 border-t border-slate-100">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -34,15 +34,15 @@ export default function HowItWorks() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <p className="text-xs uppercase tracking-widest text-violet-400 font-semibold mb-4">How it works</p>
-          <h2 className="text-3xl sm:text-4xl font-bold text-zinc-50 tracking-tight">
+          <p className="text-xs uppercase tracking-widest text-violet-600 font-semibold mb-4">How it works</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
             One day. Three phases. Real output.
           </h2>
         </motion.div>
 
         <div className="relative">
           {/* Connecting line */}
-          <div className="hidden lg:block absolute top-[2.75rem] left-[calc(16.67%-1px)] right-[calc(16.67%-1px)] h-px bg-gradient-to-r from-transparent via-zinc-700 to-transparent" />
+          <div className="hidden lg:block absolute top-[2.75rem] left-[calc(16.67%-1px)] right-[calc(16.67%-1px)] h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
 
           <div className="grid lg:grid-cols-3 gap-8">
             {steps.map((step, i) => (
@@ -56,13 +56,13 @@ export default function HowItWorks() {
               >
                 <div className="flex lg:flex-col gap-5">
                   {/* Step number circle */}
-                  <div className="shrink-0 w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-700 flex items-center justify-center text-xs font-bold text-violet-400 font-mono">
+                  <div className="shrink-0 w-11 h-11 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center text-xs font-bold text-violet-600 font-mono">
                     {step.number}
                   </div>
                   <div>
-                    <p className="text-xs text-zinc-500 mb-2 font-medium uppercase tracking-wider">{step.tag}</p>
-                    <h3 className="font-bold text-zinc-100 text-lg mb-3 leading-snug">{step.title}</h3>
-                    <p className="text-zinc-400 text-sm leading-relaxed">{step.description}</p>
+                    <p className="text-xs text-slate-400 mb-2 font-medium uppercase tracking-wider">{step.tag}</p>
+                    <h3 className="font-bold text-slate-900 text-lg mb-3 leading-snug">{step.title}</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">{step.description}</p>
                   </div>
                 </div>
               </motion.div>
