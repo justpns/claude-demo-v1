@@ -57,6 +57,17 @@ Only add entries for files that actually changed. Do not add entries for files t
 
 ---
 
+## [v1.2] — 2024-01-15
+
+### Changed
+- `agents/context-analyst/SKILL.md` bumped v1.0 → v2.0 — complete rewrite: trigger section, exact input format table, completeness rubric (1–5 with criteria), ambiguity taxonomy (5 types), PROCEED/CLARIFY/ESCALATE decision logic with thresholds, quality rules
+- `agents/brd-builder/SKILL.md` bumped v1.0 → v2.0 — complete rewrite: trigger section, input hierarchy rule, per-section writing rules, scope size calibration table, scope risk flag taxonomy (6 categories), specificity standards for each section, quality rules
+- `agents/proposal-agent/SKILL.md` bumped v1.0 → v2.0 — complete rewrite: trigger with two modes (full / revision), input format table with hierarchy, pricing decision tree (4-step), phase naming guide by project type, BRD alignment check rule, length targets by scope size, quality rules
+- `agents/client-comms/SKILL.md` bumped v1.0 → v2.0 — complete rewrite: trigger with two scenarios (proposal delivery / clarification hold), input format per scenario, five email type templates with structure, formality calibration table, 14-item banned phrases list, word count targets, quality rules
+- `agents/qa-reviewer/SKILL.md` bumped v1.0 → v2.0 — complete rewrite: trigger with re-review logic, input format with missing-input handling, verdict decision criteria with thresholds, 30-item checklist across 5 categories, structured issue entry format, severity definitions with examples, re-review scope rule, quality rules
+
+---
+
 ## [v1.1] — 2024-01-15
 
 ### Changed
