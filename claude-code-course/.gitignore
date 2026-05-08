@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# PDF exports (tracked by filename versioning, not git tracking of binaries)
+# Remove these lines if you want git to track PDFs
+*.pdf
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment files
+.env
+.env.local
+
+# Node (if any tooling is added later)
+node_modules/
+
+# Python (if any tooling is added later)
+__pycache__/
+*.pyc
+.venv/
+
+# Temporary files
+*.tmp
+*.bak
