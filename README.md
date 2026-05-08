@@ -111,10 +111,10 @@ When you update an agent file: bump the version header → add a CHANGELOG entry
 | Agent | File | Version |
 |-------|------|---------|
 | Orchestrator | `agents/orchestrator/CLAUDE.md` | v2.0 |
-| Context Analyst | `agents/context-analyst/SKILL.md` | v2.0 |
-| BRD Builder | `agents/brd-builder/SKILL.md` | v2.0 |
-| Proposal Agent | `agents/proposal-agent/SKILL.md` | v2.0 |
-| Client Comms | `agents/client-comms/SKILL.md` | v2.0 |
-| QA Reviewer | `agents/qa-reviewer/SKILL.md` | v2.0 |
+| Context Analyst | `agents/context-analyst/SKILL.md` | v3.0 |
+| BRD Builder | `agents/brd-builder/SKILL.md` | v3.0 |
+| Proposal Agent | `agents/proposal-agent/SKILL.md` | v3.0 |
+| Client Comms | `agents/client-comms/SKILL.md` | v3.0 |
+| QA Reviewer | `agents/qa-reviewer/SKILL.md` | v3.0 |
 
 *Update this table every time you bump a version.*

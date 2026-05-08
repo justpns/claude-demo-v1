@@ -57,6 +57,13 @@ Only add entries for files that actually changed. Do not add entries for files t
 
 ---
 
+## [v1.3] — 2024-01-15
+
+### Changed
+- All 5 `agents/*/SKILL.md` files bumped v2.0 → v3.0 — reformatted to conform to Claude skill creator standard: added YAML frontmatter (`name`, `description`, `when_to_use`, `user-invocable`, `argument-hint`) to all five files; restructured content from explanatory documentation to task-oriented instructions; condensed within the 500-line guideline; preserved all business logic from v2.0
+
+---
+
 ## [v1.2] — 2024-01-15
 
 ### Changed
