@@ -57,4 +57,11 @@ Only add entries for files that actually changed. Do not add entries for files t
 
 ---
 
+## [v1.1] — 2024-01-15
+
+### Changed
+- `agents/orchestrator/CLAUDE.md` bumped v1.0 → v2.0 — complete rewrite: full intake-type handling (email/form/call/retainer), per-agent routing instructions with exact briefing rules, four routing exception paths (clarification hold, revision loop, retainer shortcut, fast mode), strict output format with all required sections, and a 12-item never-do list
+
+---
+
 <!-- Add new entries above this line, in reverse chronological order (newest first) -->

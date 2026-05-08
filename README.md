@@ -110,7 +110,7 @@ When you update an agent file: bump the version header → add a CHANGELOG entry
 
 | Agent | File | Version |
 |-------|------|---------|
-| Orchestrator | `agents/orchestrator/CLAUDE.md` | v1.0 |
+| Orchestrator | `agents/orchestrator/CLAUDE.md` | v2.0 |
 | Context Analyst | `agents/context-analyst/SKILL.md` | v1.0 |
 | BRD Builder | `agents/brd-builder/SKILL.md` | v1.0 |
 | Proposal Agent | `agents/proposal-agent/SKILL.md` | v1.0 |
