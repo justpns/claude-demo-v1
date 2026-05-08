@@ -40,6 +40,3 @@ I've done a lot of the thinking already so I don't need a lot of back-and-forth 
 
 Priya
 
----
-
-*Facilitator note: This brief is well-specified — use it for the second-brain demo in Hour 3. After running the chain, show how a second brief from the same client (a fictional "follow-up brief asking for post-launch support") would be handled differently when the Context Analyst has access to the first client file in the second-brain/client-notes/ folder.*

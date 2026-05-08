@@ -22,6 +22,3 @@ Happy to meet in person. We're in the CBD.
 
 Marcus
 
----
-
-*Facilitator note: This brief is intentionally ambiguous. The client has not specified what kind of "strategy" they want, the timeline is unspecified, budget is undisclosed, and the stakeholder complexity (14-partner buy-in) is a significant undiscussed constraint. Use this brief to demonstrate how the Context Analyst flags ambiguity and how the Orchestrator decides to request clarification before proceeding to BRD.*
